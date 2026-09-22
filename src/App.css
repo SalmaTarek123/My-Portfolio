@@ -1,0 +1,91 @@
+/* ===== RESET & FULL WIDTH ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background: #ffffff;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  color: #1f2937;
+  line-height: 1.6;
+  background: #ffffff;
+}
+
+/* ===== APP ===== */
+.app {
+  width: 100%;
+  min-height: 100vh;
+  background: #ffffff;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ===== SECTION ===== */
+section {
+  width: 100%;
+  padding: 5.5rem 0;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  width: 100%;
+  background: #fdf2f8;
+  border-top: 1px solid #fbcfe8;
+  padding: 2.2rem;
+  text-align: center;
+  color: #9d174d;
+  font-size: 0.9rem;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.8rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  border: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #f472b6, #ec4899);
+  color: white;
+  box-shadow: 0 8px 20px rgba(236, 72, 153, 0.25);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(236, 72, 153, 0.35);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #db2777;
+  border: 1.5px solid #f9a8d4;
+}
+
+.btn-secondary:hover {
+  background: #fdf2f8;
+  border-color: #f472b6;
+}
