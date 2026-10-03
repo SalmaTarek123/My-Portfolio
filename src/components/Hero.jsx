@@ -137,12 +137,12 @@ const Hero = () => {
               development on the side.
             </p>
 
-            <div className="hero-tags">
+            {/* <div className="hero-tags">
               <span className="tag">Python</span>
               <span className="tag">Machine Learning</span>
               <span className="tag">Data Visualization</span>
               <span className="tag">Multivariate Analysis</span>
-            </div>
+            </div> */}
 
             <div className="hero-cta">
               <a href="#projects" className="btn btn-primary">View My Work</a>
