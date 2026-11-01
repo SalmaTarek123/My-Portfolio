@@ -268,9 +268,11 @@
 }
 
 .modal-close {
-  position: absolute;
-  top: -16px;
-  right: -14px;
+  /* sticky: stays visible at the top of the card while its content scrolls */
+  position: sticky;
+  top: 12px;
+  display: block;
+  margin: 12px 12px -52px auto;
   width: 40px;
   height: 40px;
   border: none;

@@ -50,11 +50,52 @@ const ProjectModal = ({ project, onClose }) => {
             <p>{project.description}</p>
           </div>
 
+          {/* GitHub link */}
+          {project.githubUrl && (
+            <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-block',
+                  padding: '0.6rem 1.2rem',
+                  backgroundColor: project.color + '22',
+                  color: project.color,
+                  border: `1px solid ${project.color}44`,
+                  borderRadius: '10px',
+                  fontWeight: 600,
+                  textDecoration: 'none',
+                }}
+              >
+                View on GitHub ↗
+              </a>
+            </div>
+          )}
+
           {/* Demo video */}
-          {project.demoVideo && (project.demoVideo.fileId || project.demoVideo.folderUrl) && (
+          {project.demoVideo && (
             <div style={{ marginTop: '1.5rem' }}>
               <h3 style={{ color: project.color, marginBottom: '1rem' }}>Demo Video</h3>
-              {project.demoVideo.fileId ? (
+              {project.demoVideo.src ? (
+                <video
+                  controls
+                  playsInline
+                  preload="metadata"
+                  poster={`${import.meta.env.BASE_URL}${project.demoVideo.poster || ''}`}
+                  style={{
+                    display: 'block',
+                    width: '100%',
+                    aspectRatio: '16 / 9',
+                    objectFit: 'contain',
+                    backgroundColor: '#111827',
+                    borderRadius: '12px',
+                    border: `2px solid ${project.color}`,
+                  }}
+                >
+                  <source src={`${import.meta.env.BASE_URL}${project.demoVideo.src}`} type="video/mp4" />
+                </video>
+              ) : project.demoVideo.fileId ? (
                 <div style={{
                   position: 'relative',
                   paddingBottom: '56.25%',
@@ -71,23 +112,20 @@ const ProjectModal = ({ project, onClose }) => {
                     style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 0 }}
                   />
                 </div>
-              ) : (
-                <a
-                  href={project.demoVideo.folderUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    display: 'inline-block',
-                    padding: '0.75rem 1.25rem',
-                    backgroundColor: project.color,
-                    color: '#fff',
-                    borderRadius: '10px',
-                    fontWeight: 600,
-                    textDecoration: 'none',
-                  }}
-                >
-                  ▶ Watch the demo video
-                </a>
+              ) : null}
+              {(project.demoVideo.fileId || project.demoVideo.folderUrl) && (
+                <p style={{ marginTop: '0.6rem', fontSize: '0.85rem' }}>
+                  <a
+                    href={project.demoVideo.fileId
+                      ? `https://drive.google.com/file/d/${project.demoVideo.fileId}/view`
+                      : project.demoVideo.folderUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ color: project.color, fontWeight: 600 }}
+                  >
+                    Open in Google Drive ↗
+                  </a>
+                </p>
               )}
             </div>
           )}

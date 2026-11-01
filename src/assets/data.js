@@ -29,23 +29,28 @@ export const projects = [
     title: 'Smart Sports',
     shortDesc: 'AI-powered sports networking & fitness platform',
     description:
-      'A full-stack web platform I designed and built end to end: a React frontend and a FastAPI backend that connect players and clubs, while a set of computer-vision, NLP and LLM models coach, analyze and match users.',
+      'A full-stack web platform (graduation project) where I built both the React frontend and the FastAPI backend and integrated the AI models: a React frontend and a FastAPI backend that connect players and clubs, while a set of computer-vision, NLP and LLM models coach, analyze and match users.',
     problem:
       'Players struggle to get noticed by clubs and to train with proper form on their own, while clubs have no quick, objective way to compare candidates. The goal was one platform that handles the networking side (profiles, offers, jobs) and adds AI on top: automatic exercise analysis, live coaching, nutrition and workout planning, CV matching and a conversational assistant.',
     solution:
       'Built the React frontend (separate player, club and admin dashboards, dark mode, live camera) and the FastAPI backend (SQLAlchemy with PostgreSQL, JWT authentication with bcrypt, role-based access control). Then integrated each AI component behind its own endpoint or module: MediaPipe Pose and OpenCV analyze uploaded exercise videos (joint angles, adaptive rep counting for 20+ exercises, FFmpeg to merge the annotated skeleton video with audio); TensorFlow.js MoveNet runs in the browser for live webcam tracking with good/bad-rep counting; the backend calls an LLM hosted on Kaggle/Colab and exposed through ngrok, which returns spoken (mp3) feedback plus coaching text for each workout; pdfplumber, python-docx and spaCy extract skills from player CVs and score them against each club\'s position requirements; a nutrition engine (rule-based macro calculation plus a Keras model) and an exercise planner generate 7-day plans stored per user as JSON; and a LangGraph + Groq multi-agent chatbot (medical RAG, guide, CV feedback, player analysis with a radar chart) runs as a separate service plugged into the React app.',
     results: [
-      'Delivered a complete platform solo: frontend, backend, database, authentication and AI integrations',
+      'Delivered a complete platform: frontend, backend, database, authentication and AI integrations',
       'Exercise analysis for 20+ exercises with automatic rep counting from video, and real-time form feedback from the webcam',
       'AI voice coach returns spoken feedback and coaching text for every analyzed workout',
       'CV-to-club matching scores players against position requirements; chatbot gives CV feedback and player analysis',
       'Complete club–player workflow: requests, offers, accept/reject, notifications, job board and an admin analytics panel',
     ],
+    githubUrl: 'https://github.com/polamaher20/Smart-Sports-System-GP-',
     // Demo video (Google Drive). Right now it opens the Drive folder.
     // To play it inside the page: open the video in Drive > Share > "Anyone with the link",
     // copy the id from  drive.google.com/file/d/<FILE_ID>/view  and paste it into fileId below.
     demoVideo: {
       folderUrl: 'https://drive.google.com/drive/folders/1sCG-Pi_bAWVZTpma24yfpGkej1_zfsMJ?usp=sharing',
+      // Played with the browser's own video player (best on phones): files live in /public.
+      src: 'Smart_Sports_Demo.mp4',
+      poster: 'Smart_Sports_Demo_poster.jpg',
+      // Drive copy: used as a fallback link under the video.
       fileId: '1TNdcZrrUmsJeJ7CYGG3WHx8TRzSPi9M5',
     },
     challenges: [
@@ -86,6 +91,7 @@ export const projects = [
   },
   {
     id: 'airline-satisfaction',
+    githubUrl: 'https://github.com/SalmaTarek123/Machine-Learning',
     color: '#C2410C',
     tagLabel: 'Classification',
     title: 'Airline Passenger Satisfaction',
@@ -183,6 +189,7 @@ export const projects = [
   },
   {
     id: 'compression-tool',
+    githubUrl: 'https://github.com/SalmaTarek123/Data-Compression',
     color: '#D9B36B',
     tagLabel: 'Algorithms · Desktop App',
     title: 'Multi-Algorithm Data Compression Tool',

@@ -1,6 +1,18 @@
 import React, { useState } from 'react';
 import './components.css';
 
+// Put the certificates in src/assets/images/certificates/ and name them
+// iti.(png|jpg|jpeg|webp) and route.(png|jpg|jpeg|webp). Missing files are fine.
+const certFiles = import.meta.glob('../assets/images/certificates/*.{png,jpg,jpeg,webp}', {
+  eager: true,
+  query: '?url',
+  import: 'default',
+});
+const certImage = (key) => {
+  const hit = Object.keys(certFiles).find((p) => p.split('/').pop().split('.')[0].toLowerCase() === key);
+  return hit ? certFiles[hit] : null;
+};
+
 const Skills = () => {
   const [expandedCategory, setExpandedCategory] = useState(null);
   const [certificatePopup, setCertificatePopup] = useState(null);
@@ -34,7 +46,7 @@ const Skills = () => {
       category: 'Web Development',
       icon: '🌐',
       skills: [
-        { name: 'HTML, CSS, JavaScript', cert: 'iti', certName: 'Web Development with PHP', certDate: '2025' },
+        { name: 'HTML, CSS, JavaScript', cert: 'iti', certName: 'Fullstack Web Development using PHP (90 hrs)', certDate: 'July 2025' },
         { name: 'React' },
         { name: 'Node.js' },
         { name: 'PHP' },
@@ -45,7 +57,7 @@ const Skills = () => {
       category: 'Mobile Development',
       icon: '📱',
       skills: [
-        { name: 'Android (Java & Kotlin)', cert: 'route', certName: 'Android Development Course', certDate: '2024' },
+        { name: 'Android (Java & Kotlin)', cert: 'route', certName: 'Android Development Diploma', certDate: 'October 2024' },
         
       ],
       color: '#D9B36B',
@@ -188,7 +200,7 @@ const Skills = () => {
                               onClick={() => setCertificatePopup({
                                 name: skill.certName,
                                 date: skill.certDate,
-                                org: hasCert === 'iti' ? 'Information Technology Institute (ITI)' : 'Route Academy',
+                                org: hasCert === 'iti' ? 'Information Technology Institute (ITI)' : 'Route IT Training Center',
                                 cert: hasCert,
                               })}
                               style={{
@@ -251,6 +263,84 @@ const Skills = () => {
               textAlign: 'center',
             }}
           >
+            <button
+              onClick={() => setCertificatePopup(null)}
+              style={{
+                position: 'absolute',
+                top: '1rem',
+                right: '1rem',
+                background: 'none',
+                border: 'none',
+                fontSize: '1.5rem',
+                cursor: 'pointer',
+                color: '#9ca3af',
+              }}
+            >
+              ✕
+            </button>
+
+            <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📜</div>
+
+            <h3 style={{
+              color: '#1f2937',
+              marginBottom: '0.5rem',
+              fontSize: '1.2rem',
+              fontWeight: '700',
+            }}>
+              {certificatePopup.name}
+            </h3>
+
+            <p style={{
+              color: '#6b7280',
+              marginBottom: '0.5rem',
+              fontSize: '0.95rem',
+            }}>
+              {certificatePopup.org}
+            </p>
+
+            <p style={{
+              color: '#9ca3af',
+              marginBottom: '1.5rem',
+              fontSize: '0.85rem',
+            }}>
+              Year: {certificatePopup.date}
+            </p>
+
+            {/* Certificate image (falls back to a placeholder until the file is added) */}
+            {certImage(certificatePopup.cert) ? (
+              <a href={certImage(certificatePopup.cert)} target="_blank" rel="noopener noreferrer">
+                <img
+                  src={certImage(certificatePopup.cert)}
+                  alt={`${certificatePopup.name} certificate`}
+                  style={{
+                    width: '100%',
+                    maxHeight: '60vh',
+                    objectFit: 'contain',
+                    borderRadius: '12px',
+                    border: '1px solid #e5e7eb',
+                    marginBottom: '1.5rem',
+                  }}
+                />
+              </a>
+            ) : (
+              <div style={{
+                backgroundColor: '#f3f4f6',
+                border: '2px dashed #e5e7eb',
+                borderRadius: '12px',
+                padding: '2rem',
+                marginBottom: '1.5rem',
+                minHeight: '200px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#9ca3af',
+                fontSize: '0.9rem',
+                textAlign: 'center',
+              }}>
+                Certificate image coming soon
+              </div>
+            )}
+
             <button
               onClick={() => setCertificatePopup(null)}
               style={{

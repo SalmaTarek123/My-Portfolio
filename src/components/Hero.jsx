@@ -147,6 +147,21 @@ const Hero = () => {
             <div className="hero-cta">
               <a href="#projects" className="btn btn-primary">View My Work</a>
               <a href="#contact" className="btn btn-secondary">Get In Touch</a>
+              <a
+                href={`${import.meta.env.BASE_URL}Salma_Tarek_Abdelmageed_CV.pdf`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-secondary"
+              >
+                View CV
+              </a>
+              <a
+                href={`${import.meta.env.BASE_URL}Salma_Tarek_Abdelmageed_CV.pdf`}
+                download="Salma_Tarek_Abdelmageed_CV.pdf"
+                className="btn btn-secondary"
+              >
+                Download CV
+              </a>
             </div>
           </div>
 
