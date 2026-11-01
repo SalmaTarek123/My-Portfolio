@@ -23,6 +23,42 @@ import readiness2 from '../assets/images/projects/student-readiness/cumulative-f
 
 export const projects = [
   {
+    id: 'smart-sports',
+    color: '#5B8DEF',
+    tagLabel: 'Full-Stack · AI Integration',
+    title: 'Smart Sports',
+    shortDesc: 'AI-powered sports networking & fitness platform',
+    description:
+      'A full-stack web platform I designed and built end to end: a React frontend and a FastAPI backend that connect players and clubs, while a set of computer-vision, NLP and LLM models coach, analyze and match users.',
+    problem:
+      'Players struggle to get noticed by clubs and to train with proper form on their own, while clubs have no quick, objective way to compare candidates. The goal was one platform that handles the networking side (profiles, offers, jobs) and adds AI on top: automatic exercise analysis, live coaching, nutrition and workout planning, CV matching and a conversational assistant.',
+    solution:
+      'Built the React frontend (separate player, club and admin dashboards, dark mode, live camera) and the FastAPI backend (SQLAlchemy with PostgreSQL, JWT authentication with bcrypt, role-based access control). Then integrated each AI component behind its own endpoint or module: MediaPipe Pose and OpenCV analyze uploaded exercise videos (joint angles, adaptive rep counting for 20+ exercises, FFmpeg to merge the annotated skeleton video with audio); TensorFlow.js MoveNet runs in the browser for live webcam tracking with good/bad-rep counting; the backend calls an LLM hosted on Kaggle/Colab and exposed through ngrok, which returns spoken (mp3) feedback plus coaching text for each workout; pdfplumber, python-docx and spaCy extract skills from player CVs and score them against each club\'s position requirements; a nutrition engine (rule-based macro calculation plus a Keras model) and an exercise planner generate 7-day plans stored per user as JSON; and a LangGraph + Groq multi-agent chatbot (medical RAG, guide, CV feedback, player analysis with a radar chart) runs as a separate service plugged into the React app.',
+    results: [
+      'Delivered a complete platform solo: frontend, backend, database, authentication and AI integrations',
+      'Exercise analysis for 20+ exercises with automatic rep counting from video, and real-time form feedback from the webcam',
+      'AI voice coach returns spoken feedback and coaching text for every analyzed workout',
+      'CV-to-club matching scores players against position requirements; chatbot gives CV feedback and player analysis',
+      'Complete club–player workflow: requests, offers, accept/reject, notifications, job board and an admin analytics panel',
+    ],
+    // Demo video (Google Drive). Right now it opens the Drive folder.
+    // To play it inside the page: open the video in Drive > Share > "Anyone with the link",
+    // copy the id from  drive.google.com/file/d/<FILE_ID>/view  and paste it into fileId below.
+    demoVideo: {
+      folderUrl: 'https://drive.google.com/drive/folders/1sCG-Pi_bAWVZTpma24yfpGkej1_zfsMJ?usp=sharing',
+      fileId: '1TNdcZrrUmsJeJ7CYGG3WHx8TRzSPi9M5',
+    },
+    challenges: [
+      'Accurate rep counting across 20+ exercises: every exercise moves different joints, so each got its own angle thresholds and "safe range". Edge cases (jumping jacks, butt kicks, leg swings) needed dedicated counters, and joint angles are smoothed over a few frames to stop landmark jitter from creating false reps.',
+      'Good vs. bad reps: added per-exercise form rules (minimum/maximum safe angle) and kept the bad-rep logic identical between the live-camera stream and the uploaded-video pipeline so both give the same result.',
+      'Browser-playable output: OpenCV writes a raw video with no audio, so FFmpeg re-encodes it to H.264/AAC and merges the AI coach audio into a single MP4.',
+      'Running an LLM without a GPU server: the model is hosted on Kaggle/Colab and exposed through ngrok. The backend calls it with a timeout and treats it as optional, so video analysis still completes if the tunnel is down; coaching text travels in a URL-encoded response header next to the audio.',
+      'Resilient nutrition engine: the Keras model, scaler and feature columns are loaded at startup, and a rule-based weighted-macro calculation takes over if any of them fails to load.',
+    ],
+    tags: ['React', 'FastAPI', 'PostgreSQL', 'SQLAlchemy', 'JWT', 'MediaPipe', 'OpenCV', 'TensorFlow.js', 'Keras', 'spaCy', 'LangGraph', 'Groq', 'LLM'],
+    images: [],
+  },
+  {
     id: 'walmart',
     color: '#EC4899',
     tagLabel: 'Exploratory Data Analysis',

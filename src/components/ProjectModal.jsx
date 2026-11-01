@@ -50,6 +50,48 @@ const ProjectModal = ({ project, onClose }) => {
             <p>{project.description}</p>
           </div>
 
+          {/* Demo video */}
+          {project.demoVideo && (project.demoVideo.fileId || project.demoVideo.folderUrl) && (
+            <div style={{ marginTop: '1.5rem' }}>
+              <h3 style={{ color: project.color, marginBottom: '1rem' }}>Demo Video</h3>
+              {project.demoVideo.fileId ? (
+                <div style={{
+                  position: 'relative',
+                  paddingBottom: '56.25%',
+                  height: 0,
+                  borderRadius: '12px',
+                  overflow: 'hidden',
+                  border: `2px solid ${project.color}`,
+                }}>
+                  <iframe
+                    src={`https://drive.google.com/file/d/${project.demoVideo.fileId}/preview`}
+                    title={`${project.title} demo`}
+                    allow="autoplay; fullscreen"
+                    allowFullScreen
+                    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 0 }}
+                  />
+                </div>
+              ) : (
+                <a
+                  href={project.demoVideo.folderUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'inline-block',
+                    padding: '0.75rem 1.25rem',
+                    backgroundColor: project.color,
+                    color: '#fff',
+                    borderRadius: '10px',
+                    fontWeight: 600,
+                    textDecoration: 'none',
+                  }}
+                >
+                  ▶ Watch the demo video
+                </a>
+              )}
+            </div>
+          )}
+
           {/* Problem */}
           <h3 style={{ color: project.color, marginTop: '1.5rem' }}>The Problem</h3>
           <p className="modal-description">{project.problem}</p>
@@ -57,6 +99,18 @@ const ProjectModal = ({ project, onClose }) => {
           {/* Solution */}
           <h3 style={{ color: project.color, marginTop: '1.5rem' }}>The Approach</h3>
           <p className="modal-description">{project.solution}</p>
+
+          {/* Challenges */}
+          {project.challenges && project.challenges.length > 0 && (
+            <>
+              <h3 style={{ color: project.color, marginTop: '1.5rem' }}>Challenges &amp; How I Solved Them</h3>
+              <ul className="modal-description">
+                {project.challenges.map((c, idx) => (
+                  <li key={idx} style={{ marginBottom: '0.75rem' }}>{c}</li>
+                ))}
+              </ul>
+            </>
+          )}
 
           {/* Results */}
           <h3 style={{ color: project.color, marginTop: '1.5rem' }}>Key Results</h3>
