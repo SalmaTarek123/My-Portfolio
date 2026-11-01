@@ -344,68 +344,6 @@ const Skills = () => {
             <button
               onClick={() => setCertificatePopup(null)}
               style={{
-                position: 'absolute',
-                top: '1rem',
-                right: '1rem',
-                background: 'none',
-                border: 'none',
-                fontSize: '1.5rem',
-                cursor: 'pointer',
-                color: '#9ca3af',
-              }}
-            >
-              ✕
-            </button>
-
-            <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📜</div>
-
-            <h3 style={{
-              color: '#1f2937',
-              marginBottom: '0.5rem',
-              fontSize: '1.2rem',
-              fontWeight: '700',
-            }}>
-              {certificatePopup.name}
-            </h3>
-
-            <p style={{
-              color: '#6b7280',
-              marginBottom: '0.5rem',
-              fontSize: '0.95rem',
-            }}>
-              {certificatePopup.org}
-            </p>
-
-            <p style={{
-              color: '#9ca3af',
-              marginBottom: '1.5rem',
-              fontSize: '0.85rem',
-            }}>
-              Year: {certificatePopup.date}
-            </p>
-
-            {/* Certificate Image Placeholder */}
-            <div style={{
-              backgroundColor: '#f3f4f6',
-              border: '2px dashed #e5e7eb',
-              borderRadius: '12px',
-              padding: '2rem',
-              marginBottom: '1.5rem',
-              minHeight: '200px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: '#9ca3af',
-              fontSize: '0.9rem',
-            }}>
-              Certificate Image
-              <br />
-              (Add your certificate image here)
-            </div>
-
-            <button
-              onClick={() => setCertificatePopup(null)}
-              style={{
                 padding: '0.75rem 1.5rem',
                 backgroundColor: '#EC4899',
                 color: 'white',
